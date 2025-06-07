@@ -1,6 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import { CardCollectionControls } from './CardCollectionControls';
+
+// Temporary user ID until we implement authentication
+const TEMP_USER_ID = "temp-user-1";
 
 function SetDetails() {
   const { setId } = useParams();
@@ -75,6 +79,11 @@ function SetDetails() {
                   Avg. Price: ${card.cardmarket.prices.averageSellPrice.toFixed(2)}
                 </p>
               )}
+              <CardCollectionControls
+                cardId={card.id}
+                setId={setId}
+                userId={TEMP_USER_ID}
+              />
             </div>
           </div>
         ))}
